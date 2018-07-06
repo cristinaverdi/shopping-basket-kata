@@ -1,9 +1,9 @@
 package shoppingcart;
 
 public class Customer {
-    private final int customerId;
+    private final CustomerId customerId;
 
-    public Customer(int customerId) {
+    public Customer(CustomerId customerId) {
         this.customerId = customerId;
     }
 

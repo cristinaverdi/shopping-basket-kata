@@ -32,8 +32,9 @@ Products available (in-memory repository)
 ````java
 public class ShoppingBasketService {
     public void addItem(UserID userId, ProductID productId, int quantity) {
-        public <?> basketFor(UserID userId) {}
     }
+    
+    public <?> basketFor(UserID userId) {}
 }
 ````
 

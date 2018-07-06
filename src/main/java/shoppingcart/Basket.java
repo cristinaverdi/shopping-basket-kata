@@ -1,15 +1,35 @@
 package shoppingcart;
 
-import javax.naming.ldap.UnsolicitedNotification;
+import java.util.List;
 
 public class Basket {
-    private int customerId;
+    private CustomerId customerId;
 
-    public Basket(int customerId) {
+    public Basket(CustomerId customerId) {
         this.customerId = customerId;
     }
 
     public void add(int quantity, String title) {
+        throw new UnsupportedOperationException();
+    }
+
+    public String format() {
+        throw new UnsupportedOperationException();
+    }
+
+    public CustomerId owner() {
+        throw new UnsupportedOperationException();
+    }
+
+    public void create() {
+        throw new UnsupportedOperationException();
+    }
+
+    public void addItem(ProductId productId, int quantity) {
+        throw new UnsupportedOperationException();
+    }
+
+    public List<ProductId> content() {
         throw new UnsupportedOperationException();
     }
 }
