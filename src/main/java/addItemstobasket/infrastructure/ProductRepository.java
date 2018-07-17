@@ -17,6 +17,11 @@ public class ProductRepository implements Warehouse {
                         .anyMatch(product -> product.getProductId() == productId.value());
     }
 
+    @Override
+    public Product findProductById(ProductId productId) {
+        throw new UnsupportedOperationException();
+    }
+
     private List<Product> init() {
         return Arrays.asList(
                 new Product(new ProductId(10002), new Title("The Hobbit"), new Price(5)),

@@ -5,15 +5,18 @@ import addItemstobasket.shoppingBasket.Product.ProductId;
 import addItemstobasket.shoppingBasket.Customer.CustomerId;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Basket {
-    private List<ProductId> content;
+    private List<Product> content;
     private CustomerId customerId;
+    private Date creationDate;
 
     public Basket(CustomerId customerId) {
         this.customerId = customerId;
-        content = new ArrayList<>();
+        this.content = new ArrayList<>();
+        this.creationDate = new Date();
     }
 
     public String format() {
@@ -28,18 +31,18 @@ public class Basket {
         return new Basket(customerId);
     }
 
-    public void addItem(ProductId productId, int quantity) {
+    public void addItem(Product product, int quantity) {
         for(int i = 0; i < quantity; i++) {
-            content.add(productId);
+            content.add(product);
         }
     }
 
-    public List<ProductId> content() {
+    public List<Product> content() {
         return this.content;
     }
 
-    public String creationDate() {
-        throw new UnsupportedOperationException();
+    public String creationDateAsString() {
+        return this.creationDate.toString();
     }
 
     public List<Product> products() {

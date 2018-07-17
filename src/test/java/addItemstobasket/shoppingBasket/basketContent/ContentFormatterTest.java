@@ -52,14 +52,14 @@ public class ContentFormatterTest {
 
     @Test public void
     format_creation_date() {
-        given(basket.creationDate()).willReturn("22/12/1989");
+        given(basket.creationDateAsString()).willReturn("22/12/1989");
         String formattedCreationDate = "Creation date: 22/12/1989\n";
-        assertThat(contentFormatter.formatCreationDate(basket.creationDate()), is(formattedCreationDate));
+        assertThat(contentFormatter.formatCreationDate(basket.creationDateAsString()), is(formattedCreationDate));
     }
 
     @Test public void
     format_basket_content() {
-        given(basket.creationDate()).willReturn("22/12/1989");
+        given(basket.creationDateAsString()).willReturn("22/12/1989");
         given(basket.products()).willReturn(basketContent);
 
         String formattedBasketContent = "Creation date: 22/12/1989\n" +

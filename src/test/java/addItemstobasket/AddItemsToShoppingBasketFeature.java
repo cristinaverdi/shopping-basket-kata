@@ -17,34 +17,27 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class AddItemsToShoppingBasketFeature {
 
-    private Basket basket;
     private ProductId productId;
     private CustomerId customerId;
-    private ProductRepository warehouse;
-    private BasketRepository basketRepository;
-    private ContentFormatter contentFormatter;
-    private AddItemsIntoBasketService shoppingBasketService;
+    private ShoppingBasketService shoppingBasketService;
 
     @Before public void
     set_up() {
         productId = new ProductId(10002);
 
         customerId = new CustomerId(1234);
-        basket = new Basket(customerId);
+        Basket basket = new Basket(customerId);
 
-        contentFormatter = new ContentFormatter(basket);
-        basketRepository = new BasketRepository();
-        warehouse = new ProductRepository();
+        ContentFormatter contentFormatter = new ContentFormatter(basket);
+        BasketRepository basketRepository = new BasketRepository();
+        ProductRepository warehouse = new ProductRepository();
 
-        shoppingBasketService = new AddItemsIntoBasketService(basketRepository,
-                                    contentFormatter, warehouse
-                                );
+        shoppingBasketService = new ShoppingBasketService(basketRepository, contentFormatter, warehouse);
     }
 
     @Test public void
     check_basket_content() {
         shoppingBasketService.addItems(customerId, productId, 2);
-
         String basketContent =
             "Creation date: 22/12/89\n" +
             "2 x The Hobbit\n" +

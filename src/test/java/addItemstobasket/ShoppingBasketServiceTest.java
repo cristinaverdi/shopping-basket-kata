@@ -16,15 +16,13 @@ import addItemstobasket.shoppingBasket.Product.ProductId;
 import addItemstobasket.shoppingBasket.Customer.CustomerId;
 import addItemstobasket.shoppingBasket.basketContent.ContentFormatter;
 
-import java.util.Arrays;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 
 @RunWith(MockitoJUnitRunner.class)
-public class AddItemsIntoBasketServiceTest {
+public class ShoppingBasketServiceTest {
     private ProductId productId;
     private CustomerId customerId;
-    private AddItemsIntoBasketService addItemsIntoBasketService;
+    private ShoppingBasketService addItemsIntoBasketService;
 
     @Mock private Warehouse warehouse;
     @Mock private Baskets basketRepository;
@@ -32,7 +30,7 @@ public class AddItemsIntoBasketServiceTest {
 
     @Before public void
     set_up() {
-        addItemsIntoBasketService = new AddItemsIntoBasketService(basketRepository, contentFormatter, warehouse);
+        addItemsIntoBasketService = new ShoppingBasketService(basketRepository, contentFormatter, warehouse);
         customerId = new CustomerId(1234);
         productId = new ProductId(10002);
     }

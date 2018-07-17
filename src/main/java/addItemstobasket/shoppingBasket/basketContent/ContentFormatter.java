@@ -19,7 +19,7 @@ public class ContentFormatter {
     }
 
     public String format() {
-        return  formatCreationDate(basket.creationDate()) +
+        return  formatCreationDate(basket.creationDateAsString()) +
                 formatProducts(basket.products()) +
                 formatTotalPrice(basket.products());
     }
