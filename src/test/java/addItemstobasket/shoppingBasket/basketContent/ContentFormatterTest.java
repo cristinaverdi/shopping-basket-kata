@@ -1,28 +1,26 @@
 package addItemstobasket.shoppingBasket.basketContent;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Arrays;
 
-import addItemstobasket.shoppingBasket.Product.Price;
-import addItemstobasket.shoppingBasket.Product.Product;
-import addItemstobasket.shoppingBasket.Product.Title;
-import addItemstobasket.shoppingBasket.basket.Basket;
 import org.junit.Test;
 import org.junit.Before;
+import org.mockito.Mock;
+import org.junit.runner.RunWith;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.mockito.BDDMockito.given;
 
-import addItemstobasket.shoppingBasket.Product.ProductId;
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import addItemstobasket.shoppingBasket.Product.Price;
+import addItemstobasket.shoppingBasket.Product.Title;
+import addItemstobasket.shoppingBasket.basket.Basket;
+import addItemstobasket.shoppingBasket.Product.Product;
+import addItemstobasket.shoppingBasket.Product.ProductId;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ContentFormatterTest {
-    @Mock
-    private Basket basket;
+    @Mock private Basket basket;
     private List<Product> basketContent;
     private ContentFormatter contentFormatter;
 

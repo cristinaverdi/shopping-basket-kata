@@ -1,12 +1,11 @@
 package addItemstobasket.shoppingBasket.basketContent;
 
-import addItemstobasket.shoppingBasket.Product.Product;
 import addItemstobasket.shoppingBasket.basket.Basket;
+import addItemstobasket.shoppingBasket.Product.Product;
 
 import java.util.*;
 
 public class ContentFormatter {
-
     private Basket basket;
     private static final String TIMES = " x ";
     private static final String STRING = "\n";

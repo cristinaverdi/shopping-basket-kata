@@ -1,8 +1,8 @@
 package addItemstobasket.shoppingBasket.basket;
 
-import addItemstobasket.shoppingBasket.Customer.CustomerId;
-
 import java.util.Optional;
+
+import addItemstobasket.shoppingBasket.Customer.CustomerId;
 
 public interface Baskets {
         Optional<Basket> basketFor(CustomerId customerId);

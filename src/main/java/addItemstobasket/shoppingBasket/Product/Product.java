@@ -1,7 +1,6 @@
 package addItemstobasket.shoppingBasket.Product;
 
 public class Product {
-
     private ProductId productId;
     private Title title;
     private Price price;

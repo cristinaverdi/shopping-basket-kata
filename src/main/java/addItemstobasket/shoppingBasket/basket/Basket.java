@@ -1,8 +1,8 @@
 package addItemstobasket.shoppingBasket.basket;
 
-import addItemstobasket.shoppingBasket.Customer.CustomerId;
 import addItemstobasket.shoppingBasket.Product.Product;
 import addItemstobasket.shoppingBasket.Product.ProductId;
+import addItemstobasket.shoppingBasket.Customer.CustomerId;
 
 import java.util.ArrayList;
 import java.util.List;

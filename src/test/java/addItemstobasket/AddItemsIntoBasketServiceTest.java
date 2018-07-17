@@ -26,12 +26,9 @@ public class AddItemsIntoBasketServiceTest {
     private CustomerId customerId;
     private AddItemsIntoBasketService addItemsIntoBasketService;
 
-    @Mock private
-    Warehouse warehouse;
-    @Mock private
-    Baskets basketRepository;
-    @Mock private
-    ContentFormatter contentFormatter;
+    @Mock private Warehouse warehouse;
+    @Mock private Baskets basketRepository;
+    @Mock private ContentFormatter contentFormatter;
 
     @Before public void
     set_up() {
