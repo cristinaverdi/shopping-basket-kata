@@ -1,4 +1,4 @@
-package shoppingcart;
+package addItemstobasket.shoppingBasket.Customer;
 
 public class CustomerId {
     private int id;
