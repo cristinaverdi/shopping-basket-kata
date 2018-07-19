@@ -1,12 +1,13 @@
 package addItemstobasket.shoppingBasket.basket;
 
-import addItemstobasket.shoppingBasket.Product.Price;
-import addItemstobasket.shoppingBasket.Product.Product;
-import addItemstobasket.shoppingBasket.Product.Title;
 import org.junit.Test;
 import org.junit.Before;
-import addItemstobasket.shoppingBasket.Product.ProductId;
-import addItemstobasket.shoppingBasket.Customer.CustomerId;
+
+import addItemstobasket.shoppingBasket.product.Price;
+import addItemstobasket.shoppingBasket.product.Title;
+import addItemstobasket.shoppingBasket.product.Product;
+import addItemstobasket.shoppingBasket.product.ProductId;
+import addItemstobasket.shoppingBasket.customer.CustomerId;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ public class BasketTest {
     set_up() {
         customerId = new CustomerId(1234);
         basket = new Basket(customerId);
-        content = new ArrayList<Product>();
+        content = new ArrayList<>();
     }
 
     @Test public void

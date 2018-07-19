@@ -12,11 +12,11 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.mockito.BDDMockito.given;
 
 import org.mockito.junit.MockitoJUnitRunner;
-import addItemstobasket.shoppingBasket.Product.Price;
-import addItemstobasket.shoppingBasket.Product.Title;
+import addItemstobasket.shoppingBasket.product.Price;
+import addItemstobasket.shoppingBasket.product.Title;
 import addItemstobasket.shoppingBasket.basket.Basket;
-import addItemstobasket.shoppingBasket.Product.Product;
-import addItemstobasket.shoppingBasket.Product.ProductId;
+import addItemstobasket.shoppingBasket.product.Product;
+import addItemstobasket.shoppingBasket.product.ProductId;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ContentFormatterTest {

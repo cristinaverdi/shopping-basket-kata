@@ -2,7 +2,7 @@ package addItemstobasket.infrastructure;
 
 import addItemstobasket.shoppingBasket.basket.Basket;
 import addItemstobasket.shoppingBasket.basket.Baskets;
-import addItemstobasket.shoppingBasket.Customer.CustomerId;
+import addItemstobasket.shoppingBasket.customer.CustomerId;
 
 import java.util.List;
 import java.util.Optional;

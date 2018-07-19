@@ -1,4 +1,4 @@
-package addItemstobasket.shoppingBasket.Product;
+package addItemstobasket.shoppingBasket.product;
 
 public class Title {
     private String value;

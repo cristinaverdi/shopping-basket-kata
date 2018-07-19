@@ -5,24 +5,23 @@ import org.junit.Before;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-import addItemstobasket.shoppingBasket.Product.ProductId;
-import addItemstobasket.shoppingBasket.Product.Warehouse;
 import addItemstobasket.infrastructure.ProductRepository;
 
 public class WarehouseTest {
-
     private Warehouse warehouse;
+    private ProductId productId;
 
     @Before public void
     set_up() {
         warehouse = new ProductRepository();
+        productId = new ProductId(10001);
     }
 
-    @Test
-    public void
+    @Test public void
     check_if_product_is_available() {
+
         assertThat(
-                warehouse.isProductAvailable(new ProductId(10001)),
+                warehouse.isProductAvailable(productId),
                 is(true)
         );
 
@@ -32,4 +31,8 @@ public class WarehouseTest {
         );
     }
 
+    @Test public void
+    find_a_product_by_id() {
+        assertThat(warehouse.findProductById(productId).get(), is(new Product(new ProductId(10001), new Title("Lord of the Rings"), new Price(10))));
+    }
 }

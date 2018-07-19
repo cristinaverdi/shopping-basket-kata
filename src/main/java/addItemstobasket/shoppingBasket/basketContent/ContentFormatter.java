@@ -1,7 +1,7 @@
 package addItemstobasket.shoppingBasket.basketContent;
 
 import addItemstobasket.shoppingBasket.basket.Basket;
-import addItemstobasket.shoppingBasket.Product.Product;
+import addItemstobasket.shoppingBasket.product.Product;
 
 import java.util.*;
 

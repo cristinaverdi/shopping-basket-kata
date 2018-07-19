@@ -7,8 +7,8 @@ import addItemstobasket.infrastructure.BasketRepository;
 import addItemstobasket.infrastructure.ProductRepository;
 
 import addItemstobasket.shoppingBasket.basket.Basket;
-import addItemstobasket.shoppingBasket.Product.ProductId;
-import addItemstobasket.shoppingBasket.Customer.CustomerId;
+import addItemstobasket.shoppingBasket.product.ProductId;
+import addItemstobasket.shoppingBasket.customer.CustomerId;
 import addItemstobasket.shoppingBasket.basketContent.ContentFormatter;
 
 
@@ -28,15 +28,15 @@ public class AddItemsToShoppingBasketFeature {
         customerId = new CustomerId(1234);
         Basket basket = new Basket(customerId);
 
-        ContentFormatter contentFormatter = new ContentFormatter(basket);
-        BasketRepository basketRepository = new BasketRepository();
         ProductRepository warehouse = new ProductRepository();
+        BasketRepository basketRepository = new BasketRepository();
+        ContentFormatter contentFormatter = new ContentFormatter(basket);
 
         shoppingBasketService = new ShoppingBasketService(basketRepository, contentFormatter, warehouse);
     }
 
     @Test public void
-    check_basket_content() {
+    check_basket_content() throws NotAvailableProductException {
         shoppingBasketService.addItems(customerId, productId, 2);
         String basketContent =
             "Creation date: 22/12/89\n" +

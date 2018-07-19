@@ -1,4 +1,4 @@
-package addItemstobasket.shoppingBasket.Product;
+package addItemstobasket.shoppingBasket.product;
 
 import java.util.Objects;
 

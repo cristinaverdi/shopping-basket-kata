@@ -1,11 +1,11 @@
 package addItemstobasket;
 
-import addItemstobasket.shoppingBasket.Product.Product;
 import addItemstobasket.shoppingBasket.basket.Basket;
 import addItemstobasket.shoppingBasket.basket.Baskets;
-import addItemstobasket.shoppingBasket.Product.Warehouse;
-import addItemstobasket.shoppingBasket.Product.ProductId;
-import addItemstobasket.shoppingBasket.Customer.CustomerId;
+import addItemstobasket.shoppingBasket.product.Product;
+import addItemstobasket.shoppingBasket.product.ProductId;
+import addItemstobasket.shoppingBasket.product.Warehouse;
+import addItemstobasket.shoppingBasket.customer.CustomerId;
 import addItemstobasket.shoppingBasket.basketContent.ContentFormatter;
 
 import java.util.Optional;
@@ -30,15 +30,17 @@ public class ShoppingBasketService {
         this.contentFormatter = contentFormatter;
     }
 
-    public void addItems(CustomerId customerId, ProductId productId, int quantity) {
+    public void addItems(CustomerId customerId, ProductId productId, int quantity) throws NotAvailableProductException {
         if(!basketFor(customerId).isPresent()) {
             basket = createBasket(customerId);
         }
 
-        if(warehouse.isProductAvailable(productId)) {
-            Product product = warehouse.findProductById(productId);
-            basket.addItem(product, quantity);
+        if(!warehouse.isProductAvailable(productId)) {
+            throw new NotAvailableProductException();
         }
+
+        Product product = warehouse.findProductById(productId).get();
+        basket.addItem(product, quantity);
     }
 
     public String checkBasketContent() {
