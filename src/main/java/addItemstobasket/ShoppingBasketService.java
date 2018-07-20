@@ -1,5 +1,6 @@
 package addItemstobasket;
 
+import addItemstobasket.shoppingBasket.basket.Clock;
 import addItemstobasket.shoppingBasket.basket.Basket;
 import addItemstobasket.shoppingBasket.basket.Baskets;
 import addItemstobasket.shoppingBasket.product.Product;
@@ -11,36 +12,38 @@ import addItemstobasket.shoppingBasket.basketContent.ContentFormatter;
 import java.util.Optional;
 
 public class ShoppingBasketService {
+    private Clock clock;
     private Basket basket;
     private Warehouse warehouse;
     private Baskets basketRepository;
     private ContentFormatter contentFormatter;
 
-    private Basket createBasket(CustomerId customerId) {
-        return new Basket(customerId);
-    }
-
-    public ShoppingBasketService(
-            Baskets basketRepository,
-            ContentFormatter contentFormatter,
-            Warehouse warehouse
-    ) {
+    public ShoppingBasketService(Baskets basketRepository, ContentFormatter contentFormatter, Warehouse warehouse, Clock clock) {
+        this.clock = clock;
         this.warehouse = warehouse;
         this.basketRepository = basketRepository;
         this.contentFormatter = contentFormatter;
     }
 
-    public void addItems(CustomerId customerId, ProductId productId, int quantity) throws NotAvailableProductException {
-        if(!basketFor(customerId).isPresent()) {
-            basket = createBasket(customerId);
-        }
+    private Basket createBasket(CustomerId customerId) {
+        return new Basket(customerId, clock);
+    }
 
+    public void addItems(CustomerId customerId, ProductId productId, int quantity) throws NotAvailableProductException {
         if(!warehouse.isProductAvailable(productId)) {
             throw new NotAvailableProductException();
         }
 
-        Product product = warehouse.findProductById(productId).get();
-        basket.addItem(product, quantity);
+        if(!basketFor(customerId).isPresent()) {
+            basket = createBasket(customerId);
+            basketRepository.add(basket);
+            Product product = warehouse.findProductById(productId).get();
+            basket.addItem(product, quantity);
+        }else {
+            basket = basketRepository.basketFor(customerId).get();
+            Product product = warehouse.findProductById(productId).get();
+            basket.addItem(product, quantity);
+        }
     }
 
     public String checkBasketContent() {
@@ -55,6 +58,6 @@ public class ShoppingBasketService {
     }
 
     private String formatBasketContent() {
-        return contentFormatter.format();
+        return contentFormatter.format(basket);
     }
 }

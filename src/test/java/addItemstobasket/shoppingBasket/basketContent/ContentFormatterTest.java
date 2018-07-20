@@ -26,7 +26,7 @@ public class ContentFormatterTest {
 
     @Before public void
     set_up() {
-        contentFormatter = new ContentFormatter(basket);
+        contentFormatter = new ContentFormatter();
         basketContent = Arrays.asList(
                 new Product(new ProductId(10002), new Title("The Hobbit"), new Price(5)),
                 new Product(new ProductId(10002), new Title("The Hobbit"), new Price(5)),
@@ -66,6 +66,6 @@ public class ContentFormatterTest {
                 "2 x Breaking Bad\n" +
                 "2 x The Hobbit\n" +
                 "Total: 24.00€\n";
-        assertThat(contentFormatter.format(), is(formattedBasketContent));
+        assertThat(contentFormatter.format(basket), is(formattedBasketContent));
     }
 }

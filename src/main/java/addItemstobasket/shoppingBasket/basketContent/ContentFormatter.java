@@ -14,11 +14,9 @@ public class ContentFormatter {
     private static final String TOTAL = "Total: ";
     private static final String CREATION_DATE = "Creation date: ";
 
-    public ContentFormatter(Basket basket) {
-        this.basket = basket;
-    }
 
-    public String format() {
+    public String format(Basket basket) {
+        this.basket = basket;
         return  formatCreationDate(basket.creationDateAsString()) +
                 formatProducts(basket.products()) +
                 formatTotalPrice(basket.products());
@@ -58,10 +56,10 @@ public class ContentFormatter {
 
     private int totalPrice(List<Product> content) {
         int totalPrice = 0;
-
         for (Product product : content) {
                 totalPrice += product.getPrice();
         }
+
         return totalPrice;
     }
 }

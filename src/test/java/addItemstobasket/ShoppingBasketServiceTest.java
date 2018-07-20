@@ -1,5 +1,6 @@
 package addItemstobasket;
 
+import addItemstobasket.shoppingBasket.basket.Clock;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.junit.Before;
@@ -15,10 +16,13 @@ import addItemstobasket.infrastructure.ProductRepository;
 import addItemstobasket.shoppingBasket.customer.CustomerId;
 import addItemstobasket.shoppingBasket.basketContent.ContentFormatter;
 
+import java.time.LocalDate;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ShoppingBasketServiceTest {
+    private Clock clock;
     private ProductId productId;
     private CustomerId customerId;
     private ShoppingBasketService addItemsIntoBasketService;
@@ -29,8 +33,9 @@ public class ShoppingBasketServiceTest {
 
     @Before public void
     set_up() {
+        clock = new TestableClock();
         warehouse = new ProductRepository();
-        addItemsIntoBasketService = new ShoppingBasketService(basketRepository, contentFormatter, warehouse);
+        addItemsIntoBasketService = new ShoppingBasketService(basketRepository, contentFormatter, warehouse, clock);
         customerId = new CustomerId(1234);
         productId = new ProductId(10002);
     }
@@ -50,5 +55,11 @@ public class ShoppingBasketServiceTest {
                         "Total: 45.00€ \n";
 
         assertThat(addItemsIntoBasketService.checkBasketContent(), is(basketContent));
+    }
+
+    private class TestableClock extends Clock {
+        protected LocalDate today() {
+            return LocalDate.of(1989, 12, 22);
+        }
     }
 }

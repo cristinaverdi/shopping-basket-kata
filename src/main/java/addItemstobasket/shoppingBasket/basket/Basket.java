@@ -3,23 +3,20 @@ package addItemstobasket.shoppingBasket.basket;
 import addItemstobasket.shoppingBasket.product.Product;
 import addItemstobasket.shoppingBasket.customer.CustomerId;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+import java.util.ArrayList;
 
 public class Basket {
+    private String creationDate;
     private List<Product> content;
     private CustomerId customerId;
-    private Date creationDate;
+    private Clock clock;
 
-    public Basket(CustomerId customerId) {
+    public Basket(CustomerId customerId, Clock clock) {
         this.customerId = customerId;
+        this.clock = clock;
         this.content = new ArrayList<>();
-        this.creationDate = new Date();
-    }
-
-    public String format() {
-        throw new UnsupportedOperationException();
+        this.creationDate = clock.todayAsString();
     }
 
     public CustomerId owner() {
@@ -27,7 +24,7 @@ public class Basket {
     }
 
     public Basket create(CustomerId customerId) {
-        return new Basket(customerId);
+        return new Basket(customerId, clock);
     }
 
     public void addItem(Product product, int quantity) {
@@ -36,15 +33,11 @@ public class Basket {
         }
     }
 
-    public List<Product> content() {
-        return this.content;
-    }
-
     public String creationDateAsString() {
-        return this.creationDate.toString();
+        return this.creationDate;
     }
 
     public List<Product> products() {
-        throw new UnsupportedOperationException();
+        return this.content;
     }
 }
