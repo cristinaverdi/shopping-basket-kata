@@ -1,5 +1,6 @@
 package addItemstobasket;
 
+import addItemstobasket.shoppingBasket.product.NotAvailableProductException;
 import addItemstobasket.shoppingBasket.basket.Clock;
 import org.junit.Test;
 import org.junit.Before;
@@ -7,7 +8,6 @@ import org.junit.Before;
 import addItemstobasket.infrastructure.BasketRepository;
 import addItemstobasket.infrastructure.ProductRepository;
 
-import addItemstobasket.shoppingBasket.basket.Basket;
 import addItemstobasket.shoppingBasket.product.ProductId;
 import addItemstobasket.shoppingBasket.customer.CustomerId;
 import addItemstobasket.shoppingBasket.basketContent.ContentFormatter;

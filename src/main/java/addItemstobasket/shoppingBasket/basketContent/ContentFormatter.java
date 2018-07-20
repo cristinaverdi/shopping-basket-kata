@@ -6,7 +6,6 @@ import addItemstobasket.shoppingBasket.product.Product;
 import java.util.*;
 
 public class ContentFormatter {
-    private Basket basket;
     private static final String TIMES = " x ";
     private static final String STRING = "\n";
     private static final String CURRENCY = "€";
@@ -16,7 +15,6 @@ public class ContentFormatter {
 
 
     public String format(Basket basket) {
-        this.basket = basket;
         return  formatCreationDate(basket.creationDateAsString()) +
                 formatProducts(basket.products()) +
                 formatTotalPrice(basket.products());

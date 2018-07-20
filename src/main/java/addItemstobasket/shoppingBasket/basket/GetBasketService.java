@@ -1,10 +1,5 @@
-package addItemstobasket;
+package addItemstobasket.shoppingBasket.basket;
 
-import addItemstobasket.infrastructure.BasketRepository;
-import addItemstobasket.shoppingBasket.GetBasket;
-import addItemstobasket.shoppingBasket.basket.Basket;
-import addItemstobasket.shoppingBasket.basket.Baskets;
-import addItemstobasket.shoppingBasket.basket.Clock;
 import addItemstobasket.shoppingBasket.customer.CustomerId;
 
 import java.util.Optional;

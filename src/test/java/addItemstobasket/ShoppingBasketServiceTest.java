@@ -1,5 +1,6 @@
 package addItemstobasket;
 
+import addItemstobasket.shoppingBasket.product.NotAvailableProductException;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.junit.Before;

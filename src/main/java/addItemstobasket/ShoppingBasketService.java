@@ -1,5 +1,6 @@
 package addItemstobasket;
 
+import addItemstobasket.shoppingBasket.product.NotAvailableProductException;
 import addItemstobasket.shoppingBasket.basket.Clock;
 import addItemstobasket.shoppingBasket.basket.Basket;
 import addItemstobasket.shoppingBasket.basket.Baskets;
@@ -7,9 +8,8 @@ import addItemstobasket.shoppingBasket.product.Product;
 import addItemstobasket.shoppingBasket.product.ProductId;
 import addItemstobasket.shoppingBasket.product.Warehouse;
 import addItemstobasket.shoppingBasket.customer.CustomerId;
+import addItemstobasket.shoppingBasket.basket.GetBasketService;
 import addItemstobasket.shoppingBasket.basketContent.ContentFormatter;
-
-import java.util.Optional;
 
 public class ShoppingBasketService {
     private Clock clock;
