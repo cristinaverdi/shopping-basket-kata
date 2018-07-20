@@ -25,36 +25,28 @@ public class ShoppingBasketService {
         this.contentFormatter = contentFormatter;
     }
 
-    private Basket createBasket(CustomerId customerId) {
-        return new Basket(customerId, clock);
-    }
-
     public void addItems(CustomerId customerId, ProductId productId, int quantity) throws NotAvailableProductException {
         if(!warehouse.isProductAvailable(productId)) {
             throw new NotAvailableProductException();
         }
 
-        if(!basketFor(customerId).isPresent()) {
-            basket = createBasket(customerId);
-            basketRepository.add(basket);
-            Product product = warehouse.findProductById(productId).get();
-            basket.addItem(product, quantity);
-        }else {
-            basket = basketRepository.basketFor(customerId).get();
-            Product product = warehouse.findProductById(productId).get();
-            basket.addItem(product, quantity);
-        }
+        getBasket(customerId);
+        addItem(productId, quantity);
     }
 
     public String checkBasketContent() {
         return formatBasketContent();
     }
 
-    public Optional<Basket> basketFor(CustomerId customerId) {
-        if(basketRepository.basketFor(customerId).isPresent()) {
-            return basketRepository.basketFor(customerId);
-        }
-        return Optional.empty();
+    private void getBasket(CustomerId customerId) {
+        GetBasketService getBasket = new GetBasketService(customerId, basketRepository, clock);
+        getBasket.execute();
+        basket = getBasket.basket();
+    }
+
+    private void addItem(ProductId productId, int quantity) {
+        Product product = warehouse.findProductById(productId).get();
+        basket.addItem(product, quantity);
     }
 
     private String formatBasketContent() {

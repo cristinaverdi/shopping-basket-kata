@@ -1,6 +1,5 @@
 package addItemstobasket;
 
-import addItemstobasket.shoppingBasket.basket.Clock;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.junit.Before;
@@ -11,6 +10,7 @@ import static org.mockito.BDDMockito.given;
 import static org.hamcrest.CoreMatchers.is;
 
 import addItemstobasket.shoppingBasket.product.*;
+import addItemstobasket.shoppingBasket.basket.Clock;
 import addItemstobasket.shoppingBasket.basket.Baskets;
 import addItemstobasket.infrastructure.ProductRepository;
 import addItemstobasket.shoppingBasket.customer.CustomerId;
@@ -34,10 +34,10 @@ public class ShoppingBasketServiceTest {
     @Before public void
     set_up() {
         clock = new TestableClock();
+        productId = new ProductId(10002);
+        customerId = new CustomerId(1234);
         warehouse = new ProductRepository();
         addItemsIntoBasketService = new ShoppingBasketService(basketRepository, contentFormatter, warehouse, clock);
-        customerId = new CustomerId(1234);
-        productId = new ProductId(10002);
     }
 
     @Test public void
